@@ -1,0 +1,473 @@
+@import url('https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Uncial+Antiqua&display=swap');
+
+/* ==================================================
+   Universal CSS
+   ==================================================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Caudex", serif;
+    color: #FAF9F6;
+}
+
+h1, h2, h3 {
+    font-family: "Uncial Antiqua", system-ui;
+    letter-spacing: 2.0px;
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: 200;
+    border-bottom: 1px solid #FAF9F6;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p, li {
+    line-height: 1.80;
+    font-size: 18px;
+}
+
+ol {
+    text-align: left;
+    padding-left: 20px;
+}
+
+/* ===== Specialized Font ===== */
+#game-mechanics h2, #game-mechanics h3 {
+    font-family: "Caudex", serif;
+    letter-spacing: 1.0px;
+}
+
+/* ==================================================
+   Containers
+   ==================================================*/
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 80px;
+    place-items: center;
+    justify-content: center;
+    padding: 120px 280px 180px;
+}
+
+.content-gap {
+    gap: 40px;
+    text-align: center;
+}
+
+/* ==================================================
+   Card Section
+   ==================================================*/
+.chapter-heading {
+    display: inline-block;
+    border: 0.5px solid #FAF9F6;
+    padding: 8px 16px;
+    transition: transform 0.3s ease;
+}
+
+.chapter-heading:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+.card img{
+    width: 250px;
+    height: 400px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    filter: saturate(1.0);  /* Default saturation */
+    cursor: default; /* Default cursor */
+    box-shadow: rgba(180, 65, 50, 0.35) 0px 30px 60px, rgba(140, 40, 35, 0.25) 0px 20px 25px; /* Default box-shadow */
+}
+
+.card img:hover {
+    transform: scale(1.15);
+}
+
+.story-card img {
+    width: 312px;
+    height: 500px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+    object-position: 50% 100%;
+    filter: saturate(0.9);
+    box-shadow: rgba(218, 165, 70, 0.35) 0px 30px 60px, rgba(196, 145, 55, 0.25) 0px 20px 25px;
+}
+
+.story-card img:hover {
+    transform: scale(1.05);
+    filter: saturate(1.0);
+}
+
+button {
+    cursor: pointer;
+    padding: 8px 24px;
+    font-size: 24px;
+    font-family: "Uncial Antiqua", system-ui;
+    color: #FAF9F6;
+    background: none;
+    border: 1px solid #FAF9F6;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgba(250, 249, 246, 0.1);
+    transform: scale(1.05);
+}
+
+#claim_button {
+    box-shadow: rgba(218, 165, 70, 0.35) 0px 30px 60px, rgba(196, 145, 55, 0.25) 0px 20px 25px;
+    background-color: rgba(218, 165, 70, 0.5);
+    display: none; /* Controlled through JS */
+}
+
+#claim_button:hover {
+    color: rgba(0, 0, 0, 0.90);
+    background-color: rgba(218, 165, 70, 1);
+}
+
+/* ==================================================
+   Background Section
+   ==================================================*/
+.background {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* ===== Default Backgrounds ===== */
+#game-intro {
+    background-image: url("../images/game-introduction-background.png");
+}
+
+#game-mechanics {
+    background-image: url("../images/game-mechanics-background.png");
+}
+
+#chapter1 {
+    background-image: url("../images/unlocked-story-background.png");
+}
+
+#chapter2 {
+    background-image: url("../images/locked-story-background.png");
+    filter: saturate(1.0);
+}
+
+#chapter3 {
+    background-image: url("../images/locked-story-background.png");
+    filter: saturate(1.0);
+}
+
+#epilogue {
+    background-image: url("../images/locked-story-background.png");
+    filter: saturate(1.0);
+}
+
+/* ==================================================
+   Overlay Section
+   ==================================================*/
+.overlay-container {
+    position: fixed;
+    z-index: 200;
+    inset: 0;
+    height: 100vh;
+    padding: 120px 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    backdrop-filter: blur(8px);
+    background-color: rgba(5, 2, 0, 0.85);
+    overflow-y: auto;
+}
+
+.overlay-story {
+    display: none;
+}
+
+.overlay-quest {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==================================================
+   Overlay Storyline Section
+   ================================================== */
+.story-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 500px;
+    flex: 1;
+    min-width: 0;
+}
+
+.story-content h2 {
+    margin-bottom: 8px;
+}
+
+.story-content hr {
+    margin: 16px 0;
+}
+
+.close-story {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+}
+
+/* ==================================================
+   Overlay Quest Section
+   ==================================================*/
+.quest-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 800px;
+    max-width: 90%;
+    margin: auto;
+    padding: 40px;
+    background-color: rgba(92, 58, 24, 0.35);
+    border: 1px solid #FAF9F6;
+    border-radius: 24px;
+    box-shadow:rgba(218, 165, 70, 0.35) 0px 30px 60px, rgba(196, 145, 55, 0.25) 0px 20px 25px;
+}
+
+.quest-content button {
+    margin: 24px auto 0 auto;
+}
+
+.quest-content label {
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+#quest_heading {
+    border-bottom: 1px solid #FAF9F6;
+    padding-bottom: 8px;
+}
+
+#question {
+    margin-bottom: 16px;
+}
+
+.close-quest {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.quest-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+fieldset {
+    border: none;
+}
+
+/* ==================================================
+   Message Card Section
+   ==================================================*/
+
+/* Hide first all elements */
+.hideContent {
+    display: none !important;
+}
+
+.message-container {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background-image: url("../images/table-background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.message-container img {
+    max-width: 450px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: rgba(218, 165, 70, 0.45) 0px 20px 40px, rgba(196, 145, 55, 0.3) 0px 10px 20px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.message-container img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+.message-container h1, .message-container p {
+    color: black;
+}
+
+/* ==================================================
+   Footer Section
+   ==================================================*/
+footer {
+    background-color: black;
+    padding: 80px 280px 40px;
+    text-align: center;
+}
+
+footer small:first-child {
+    font-style: italic;
+}
+
+/* ==================================================
+   Responsive Web Designs
+   ==================================================*/
+
+/* --- Max Width: 1024px (Tablets & Smaller Laptops) --- */
+@media (max-width: 1024px) {
+    .container, .message-container, footer {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+    .overlay-container {
+        padding: 80px 60px;
+        gap: 50px;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .message-container {
+        padding: 60px 40px;
+    }
+
+    .message-container img {
+        max-width: 400px;
+    }
+}
+
+/* --- Max Width: 768px (Tablets Portrait & Large Phones) --- */
+@media (max-width: 768px) {
+    .container, .message-container {
+        padding: 60px 24px 100px;
+        gap: 40px;
+    }
+
+    footer {
+        padding: 60px 24px 30px;
+    }
+
+    h1 {
+        font-size: 2.6rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    /* Adjust Overlay Storyline for Mobile/Tablet */
+    .overlay-container {
+        flex-direction: column;
+        padding: 40px 20px;
+        overflow-y: auto;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .overlay-story {
+        flex-direction: column !important;
+    }
+
+    .story-card img {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .story-section {
+        height: auto;
+        width: 100%;
+    }
+
+    .quest-section {
+        width: 100%;
+        padding: 24px;
+    }
+
+    .message-container {
+        padding: 40px 20px;
+    }
+    .message-container img {
+        max-width: 320px;
+    }
+}
+
+/* --- Max Width: 480px (Compact Mobile Devices) --- */
+@media (max-width: 480px) {
+    .container, .message-container {
+        padding: 40px 16px 80px;
+        gap: 25px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p, li {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 6px 18px;
+    }
+
+    .card img {
+        width: 220px;
+        height: 352px;
+    }
+
+    .overlay-container {
+        padding: 20px 12px;
+    }
+
+    footer {
+        padding: 40px 16px 20px;
+        font-size: 14px;
+    }
+
+    .message-container {
+        padding: 30px 12px;
+    }
+    .message-container img {
+        max-width: 280px; /* Fits comfortably on compact mobile screens */
+    }
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/icon" href="images/brown-book.png">
+        <link rel="stylesheet" type="text/css" href="styles/styles.css">
+        <title>The Lost Codex - An Interactive Journey</title>
+    </head>
+    <body>
+        
+        <main>
+            <!-- Title Section -->
+            <section class="container content-gap background" id="game-intro">
+                <h1>The Lost Codex</h1>
+                <p>Welcome! Every journey begins with a single blueprint, but sometimes the best paths are the ones we redraw along the way. Step into a short, interactive narrative about shifting perspectives, finding new passions, and discovering where you truly belong.</p>
+            </section>
+
+            <!-- Game Mechanics Section -->
+            <section class="container content-gap background" id="game-mechanics">
+                <h2>HOW TO PLAY</h2>
+                <p>Every meaningful journey is built one chapter at a time—from the heavy plates of early creative pursuits, to quiet moments of doubt, and finally to the bright logic of a brand-new path. Before you can unlock the final golden message, you must retrace these steps. Read each narrative carefully, discover the hidden truth within each story, and answer the checkpoint questions to guide the way forward.</p>
+                <h3>Instructions:</h3>
+                <ol>
+                    <li>Read &amp; Explore: Tap Chapter 1 to read the first part of the journey.</li>
+                    <li>Unlock the Path: Tap the next locked card and answer a quick question based on what you just read to open it.</li>
+                    <li>Keep Moving: Repeat this process to unlock Chapters 2, 3, and the Epilogue.</li>
+                    <li>Claim Your Reward: Complete all chapters to open the final Golden Envelope and reveal something special!</li>
+                </ol>
+            </section>
+
+            <!-- Card 1 -->
+            <section class="container background" id="chapter1">
+                <div class="chapter-heading">
+                    <h2>Chapter 1</h2>
+                </div>
+                <div class="card">
+                    <img src="images/chapter-1-card.png" alt="Chapter 1 Card Cover: Fading Sketches" id="first_card">
+                </div>
+            </section> 
+
+            <!-- Card 2 -->
+            <section class="container background" id="chapter2">
+                <div class="chapter-heading">
+                    <h2>Chapter 2</h2>
+                </div>
+                <div class="card">
+                    <img src="images/locked-card.png" alt="Chapter 2 Card Cover (Locked): Turning the Page" id="second_card">
+                </div>
+                <p id="second_card_reminder" aria-live="polite"></p>
+            </section>
+
+            <!-- Card 3 -->
+            <section class="container background" id="chapter3">
+                <div class="chapter-heading">
+                    <h2>Chapter 3</h2>
+                </div>
+                <div class="card">
+                    <img src="images/locked-card.png" alt="Chapter 3 Card Cover (Locked): A New Canvas" id="third_card">
+                </div>
+                <p id="third_card_reminder" aria-live="polite"></p>
+            </section>
+
+            <!-- Golden Card (Epilogue) -->
+            <section class="container background" id="epilogue">
+                <div class="chapter-heading">
+                    <h2>Epilogue</h2>
+                </div>
+                <div class="card golden-card">
+                    <img src="images/locked-card.png" alt="Epilogue Golden Envelope Card (Locked): The Brightest Chapter" id="golden_card">
+                </div>
+                <p id="golden_card_reminder" aria-live="polite"></p>
+                <button id="claim_button">Claim Your Reward!</button>
+            </section>
+
+            <!-- Overlay Storyline -->
+            <section class="overlay-container overlay-story" aria-label="Story Modal">
+                <div class="story-card">
+                    <img src="" alt="Illustration for the current chapter narrative" id="story_image">
+                </div>
+                <div class="story-section">
+                    <div class="story-content">
+                        <h2 id="story_chapter"></h2>
+                        <h2 id="chapter_title"></h2>
+                        <hr />
+                        <p id="story_text"></p>
+                    </div>
+                    <div class="close-story">
+                        <button id="close_story_button">Close Story</button>
+                    </div>
+                </div>
+            </section> 
+
+            <!-- Overlay Quest -->
+            <section class="overlay-container overlay-quest" aria-label="Quest Checkpoint Modal">
+                <div class="quest-section" id="story_quest">
+                    <div class="close-quest">
+                        <button id="close_quest_button">Close Quest</button>
+                    </div>
+                    <div class="quest-content">
+                        <h3 id="quest_heading">Quest 1</h3>
+                        <fieldset>
+                            <legend id="question"></legend>
+                            <input type="radio" id="answer1" name="answer" value="answer1">
+                            <label for="answer1">Answer 1</label> <!-- Default Answer -->
+                            <br />
+                            <input type="radio" id="answer2" name="answer" value="answer2">
+                            <label for="answer2">Answer 2</label> <!-- Default Answer -->
+                            <br />
+                            <input type="radio" id="answer3" name="answer" value="answer3">
+                            <label for="answer3">Answer 3</label> <!-- Default Answer -->
+                            <br />
+                            <p id="answer_feedback" aria-live="polite"></p>
+                        </fieldset>
+                        <button id="confirm_answer">Confirm Answer</button>
+                    </div>
+                </div>
+            </section> 
+
+            <!-- Message Card Section -->
+            <section class="message-container" id="myMessage" aria-label="Appreciation Letter Message">
+                <img src="images/letter-of-appreciation.png" alt="Letter of appreciation for professor">
+            </section>
+        </main>
+
+        <footer>
+            <small>Disclaimer: Visual elements are generated using AI tools, utilized strictly for academic purposes and creative illustration only. No copyright infringement intended.</small>
+            <br />
+            <br />
+            <small>&copy; 2026 Mallare. All Rights Reserved</small>
+        </footer>
+
+        <script src="script/script.js"></script>
+    </body>
+</html>
