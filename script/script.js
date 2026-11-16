@@ -14,7 +14,7 @@ class StoryContent {
     }
 }
 
-/// Chapter 1 Story Data
+// Chapter 1 Story Data
 const firstStory = new StoryContent(
     "images/chapter-1-illustration.png", 
     "Chapter 1 Illustration", 
@@ -253,23 +253,21 @@ const secondStoryReminder = document.getElementById("second_card_reminder");
 const secondStoryBackground = document.getElementById("chapter2");
 
 function updateSecondCard() {
-    // If the first story haven't read and the second card haven't unlocked
     if (!isFirstStoryRead && !isSecondStoryUnlocked) {
         secondCard.style.cursor = "default";
+    } else if (isFirstStoryRead && !isSecondStoryUnlocked) {
+        // FIXED: Removed "../" so path is relative to root index.html
+        secondStoryBackground.style.backgroundImage = "url('images/unlocked-story-background.png')";
+        secondStoryBackground.style.filter = "saturate(0.0)";
+        secondCard.setAttribute("src", "images/chapter-2-card.png");
+        secondCard.setAttribute("alt", "Chapter 2 Card Cover");
+        secondCard.style.cursor = "pointer";
+        secondCard.style.boxShadow = yellowShadow;
+        secondStoryReminder.innerText = "";
+    } else {
+        secondCard.style.cursor = "pointer";
+        secondStoryBackground.style.filter = "saturate(1.0)";
     }
-        else if (isFirstStoryRead && !isSecondStoryUnlocked) {
-            secondStoryBackground.style.backgroundImage = "url('../images/unlocked-story-background.png')";
-            secondStoryBackground.style.filter = "saturate(0.0)";
-            secondCard.setAttribute("src", "images/chapter-2-card.png");
-            secondCard.setAttribute("alt", "Chapter 2 Card Cover");
-            secondCard.style.cursor = "pointer";
-            secondCard.style.boxShadow = yellowShadow;
-            secondStoryReminder.innerText = "";
-        }
-            else {
-                secondCard.style.cursor = "pointer";
-                secondStoryBackground.style.filter = "saturate(1.0)";
-            }
 }
 
 updateSecondCard();
@@ -304,20 +302,19 @@ const thirdStoryBackground = document.getElementById("chapter3");
 function updateThirdCard() {
     if (!isSecondStoryRead && !isThirdStoryUnlocked) {
         thirdCard.style.cursor = "default";
-    } 
-        else if (isSecondStoryRead && !isThirdStoryUnlocked) {
-            thirdStoryBackground.style.backgroundImage = "url('../images/unlocked-story-background.png')";
-            thirdStoryBackground.style.filter = "saturate(0.0)";
-            thirdCard.setAttribute("src", "images/chapter-3-card.png");
-            thirdCard.setAttribute("alt", "Chapter 3 Card Cover");
-            thirdCard.style.cursor = "pointer";
-            thirdCard.style.boxShadow = yellowShadow;
-            thirdStoryReminder.innerText = "";
-        } 
-            else {
-                thirdCard.style.cursor = "pointer";
-                thirdStoryBackground.style.filter = "saturate(1.0)";
-            }
+    } else if (isSecondStoryRead && !isThirdStoryUnlocked) {
+        // FIXED: Removed "../"
+        thirdStoryBackground.style.backgroundImage = "url('images/unlocked-story-background.png')";
+        thirdStoryBackground.style.filter = "saturate(0.0)";
+        thirdCard.setAttribute("src", "images/chapter-3-card.png");
+        thirdCard.setAttribute("alt", "Chapter 3 Card Cover");
+        thirdCard.style.cursor = "pointer";
+        thirdCard.style.boxShadow = yellowShadow;
+        thirdStoryReminder.innerText = "";
+    } else {
+        thirdCard.style.cursor = "pointer";
+        thirdStoryBackground.style.filter = "saturate(1.0)";
+    }
 }
 
 updateThirdCard();
@@ -356,20 +353,19 @@ const epilogueStoryBackground = document.getElementById("epilogue");
 function updateGoldenCard() {
     if (!isThirdStoryRead && !isEpilogueUnlocked) {
         goldenCard.style.cursor = "default";
-    } 
-        else if (isThirdStoryRead && !isEpilogueUnlocked) {
-            epilogueStoryBackground.style.backgroundImage = "url('../images/special-unlocked-story-background.png')";
-            epilogueStoryBackground.style.filter = "saturate(0.0)";
-            goldenCard.setAttribute("src", "images/epilogue-card.png");
-            goldenCard.setAttribute("alt", "Epilogue Golden Envelope Card");
-            goldenCard.style.cursor = "pointer";
-            goldenCard.style.boxShadow = yellowShadow;
-            epilogueReminder.innerText = "";
-        } 
-            else {
-                goldenCard.style.cursor = "pointer";
-                epilogueStoryBackground.style.filter = "saturate(1.0)";
-            }
+    } else if (isThirdStoryRead && !isEpilogueUnlocked) {
+        // FIXED: Removed "../"
+        epilogueStoryBackground.style.backgroundImage = "url('images/special-unlocked-story-background.png')";
+        epilogueStoryBackground.style.filter = "saturate(0.0)";
+        goldenCard.setAttribute("src", "images/epilogue-card.png");
+        goldenCard.setAttribute("alt", "Epilogue Golden Envelope Card");
+        goldenCard.style.cursor = "pointer";
+        goldenCard.style.boxShadow = yellowShadow;
+        epilogueReminder.innerText = "";
+    } else {
+        goldenCard.style.cursor = "pointer";
+        epilogueStoryBackground.style.filter = "saturate(1.0)";
+    }
 }
 
 updateGoldenCard();
